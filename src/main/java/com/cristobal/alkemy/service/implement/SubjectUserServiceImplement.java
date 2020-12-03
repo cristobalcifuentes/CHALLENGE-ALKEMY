@@ -49,4 +49,10 @@ public class SubjectUserServiceImplement implements ISubjectUserService {
 		return true;
 	}
 
+	@Override
+	public PKSubjectUser crearPK(int idSubject, int idUser) {
+		
+		return new PKSubjectUser(idSubject, idUser);
+	}
+
 }

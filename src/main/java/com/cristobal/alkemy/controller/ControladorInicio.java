@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.cristobal.alkemy.models.entity.UserLoginDTO;
+import com.cristobal.alkemy.models.DTO.UserLoginDTO;
 
 @Controller
 public class ControladorInicio {

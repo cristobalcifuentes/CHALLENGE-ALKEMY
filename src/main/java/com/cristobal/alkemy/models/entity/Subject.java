@@ -19,7 +19,7 @@ public class Subject {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,  generator = "seq_subject")
-	@SequenceGenerator(name = "seq_subject", sequenceName = "seq_subject", allocationSize = 1)
+	@SequenceGenerator(name = "seq_subject", sequenceName = "seq_subject", allocationSize = 1, initialValue= 2)
 	@Column(name = "subject_id")
 	private int id;
 	
@@ -38,8 +38,12 @@ public class Subject {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "hour_hand_id", nullable = false, foreignKey = @ForeignKey(name = "FK_subject_hour_hand_id"))
-	private HourHand hourHand;
+	@JoinColumn(name = "day_hour_hand_id", nullable = false, foreignKey = @ForeignKey(name = "FK_subject_day_hour_hand_id"))
+	private DayHourHand dayHourHand;
+	
+	@ManyToOne
+	@JoinColumn(name = "teacher_id", foreignKey = @ForeignKey(name = "FK_subject_teacher_id"))
+	private Teacher teacher;
 
 
 	public int getId() {
@@ -82,21 +86,37 @@ public class Subject {
 	}
 
 
-	public HourHand getHourHand() {
-		return hourHand;
+	public DayHourHand getDayHourHand() {
+		return dayHourHand;
 	}
 
 
-	public void setHourHand(HourHand hourHand) {
-		this.hourHand = hourHand;
+	public void setDayHourHand(DayHourHand dayHourHand) {
+		this.dayHourHand = dayHourHand;
+	}
+
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Subject [id=" + id + ", name=" + name + ", quantity=" + quantity + ", description=" + description
-				+ ", hourHand=" + hourHand + "]";
+				+ ", dayHourHand=" + dayHourHand + ", teacher=" + teacher + "]";
 	}
+
+
+	
+
+
+
 	
 	
 	

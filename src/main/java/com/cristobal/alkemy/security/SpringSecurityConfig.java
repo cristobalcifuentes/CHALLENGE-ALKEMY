@@ -26,6 +26,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder builder) throws Exception {
 
 		builder.userDetailsService(userDetail)
+		.passwordEncoder(passwordEncoder());
 
 		
 	}
@@ -33,8 +34,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-		http.authorizeRequests().anyRequest().permitAll()
-		.and().formLogin().loginPage("/login").permitAll()
+		http.cors().and().csrf().disable()
+		.authorizeRequests().anyRequest().permitAll()
+		
+		//.and().formLogin().loginPage("/login").permitAll()
 		;
 		
 	}

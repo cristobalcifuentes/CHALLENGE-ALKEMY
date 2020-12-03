@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.cristobal.alkemy.models.entity.UserLoginDTO;
+import com.cristobal.alkemy.models.DTO.UserLoginDTO;
 
 @Controller
 public class LoginController {
@@ -22,10 +22,10 @@ public class LoginController {
 		System.out.println(user.getPassword());
 		System.out.println(user.getRut());
 		
-		System.out.println("llego al controlador");
-		if (user.getRut() == "") {
-			System.out.println("user vacio");
-			return "redirect:/";
+		System.out.println("llego al controlador logincontroller metodo login");
+		if (user.getRut().equals("admin")) {
+			System.out.println("admin");
+			return "/indexadmin";
 		}
 		return "/index";
 	}

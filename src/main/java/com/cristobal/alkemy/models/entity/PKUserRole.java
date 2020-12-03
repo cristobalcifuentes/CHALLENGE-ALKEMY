@@ -50,6 +50,16 @@ public class PKUserRole implements Serializable {
 			return false;
 		return true;
 	}
+
+	public PKUserRole(int user, int role) {
+		this.user = user;
+		this.role = role;
+	}
+
+	public PKUserRole() {
+	}
+	
+	
 	
 	
 

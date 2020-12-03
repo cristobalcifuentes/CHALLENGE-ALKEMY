@@ -17,7 +17,7 @@ public class Teacher {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,  generator = "seq_teacher")
-	@SequenceGenerator(name = "seq_teacher", sequenceName = "seq_teacher", allocationSize = 1)
+	@SequenceGenerator(name = "seq_teacher", sequenceName = "seq_teacher", allocationSize = 1, initialValue= 5)
 	@Column(name = "teacher_id")
 	private int id;
 	

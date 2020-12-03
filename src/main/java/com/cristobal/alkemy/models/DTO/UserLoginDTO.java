@@ -1,4 +1,4 @@
-package com.cristobal.alkemy.models.entity;
+package com.cristobal.alkemy.models.DTO;
 
 import javax.validation.constraints.NotBlank;
 

@@ -12,5 +12,6 @@ public interface ISubjectUserService {
 	List<SubjectUser> listar();
 	SubjectUser leerPorId(PKSubjectUser id);
 	boolean eliminar(PKSubjectUser id);
+	PKSubjectUser crearPK(int idSubject, int idUser);
 
 }

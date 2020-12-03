@@ -42,7 +42,7 @@ public class TeacherRestController {
 	
 	@PostMapping
 	public ResponseEntity<Teacher> registrar(@RequestBody Teacher teacher){
-		
+		System.out.println("profesor que llega el metodo registrar den el rest: " + teacher);
 		Teacher teach = teacherService.registrar(teacher);
 		return new ResponseEntity<Teacher>(teach, HttpStatus.OK);
 	}

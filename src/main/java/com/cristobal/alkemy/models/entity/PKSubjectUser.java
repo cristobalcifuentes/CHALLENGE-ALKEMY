@@ -51,6 +51,16 @@ public class PKSubjectUser implements Serializable {
 			return false;
 		return true;
 	}
+
+	public PKSubjectUser(int subject, int user) {
+		this.subject = subject;
+		this.user = user;
+	}
+
+	public PKSubjectUser() {
+	}
+	
+	
 	
 	
 	

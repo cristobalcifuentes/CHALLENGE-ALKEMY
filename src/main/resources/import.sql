@@ -5,6 +5,13 @@ INSERT INTO hour_hand (hour_hand_id, detail) VALUES(4, '14:00 - 15:30');
 INSERT INTO hour_hand (hour_hand_id, detail) VALUES(5, '15:45 - 17:15');
 INSERT INTO hour_hand (hour_hand_id, detail) VALUES(6, '17:30 - 19:00');
 INSERT INTO hour_hand (hour_hand_id, detail) VALUES(7, '19:15 - 20:45');
+INSERT INTO day (day_id, day) VALUES(1, 'lunes');
+INSERT INTO day (day_id, day) VALUES(2, 'martes');
+INSERT INTO day (day_id, day) VALUES(3, 'miercoles');
+INSERT INTO day (day_id, day) VALUES(4, 'jueves');
+INSERT INTO day (day_id, day) VALUES(5, 'viernes');
+INSERT INTO day_hour_hand (day_hour_hand_id, day_id, hour_hand_id) VALUES(1, 1, 1);
+
 INSERT INTO role (role_id, role) VALUES(1, 'administrator');
 INSERT INTO role (role_id, role) VALUES(2, 'student');
 INSERT INTO enabled (enabled_id, enabled) VALUES(1, 'enabled');
@@ -20,3 +27,4 @@ INSERT INTO users_role(role_id, user_id) VALUES(1, 1);
 INSERT INTO users_role(role_id, user_id) VALUES(1, 2);
 INSERT INTO users_role(role_id, user_id) VALUES(1, 3);
 INSERT INTO users_role(role_id, user_id) VALUES(2, 3);
+INSERT INTO subject(subject_id, description, name, quantity, day_hour_hand_id, teacher_id ) VALUES(1, 'introduccion a la programacion', 'introduccion a la programacion', 5, 1, 1);
