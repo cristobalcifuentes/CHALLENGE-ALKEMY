@@ -29,7 +29,7 @@ public class SubjectRestController {
 	@GetMapping
 	public ResponseEntity<List<Subject>> listar(){
 		
-		List<Subject> subjects = subjectService.listar();
+		List<Subject> subjects =  subjectService.agregarCuposTomados( subjectService.listar()) ;
 		return new ResponseEntity<List<Subject>>(subjects, HttpStatus.OK);
 	}
 	
@@ -58,6 +58,16 @@ public class SubjectRestController {
 	public ResponseEntity<Integer> eliminar(@PathVariable Integer id){
 		subjectService.eliminar(id);
 		return new ResponseEntity<Integer>(id, HttpStatus.OK);
+		
+	}
+	
+	@DeleteMapping("/cupos/{id}")
+	public ResponseEntity<Integer> cuposTomados(@PathVariable("id") int idSubject){
+		
+		int idSub= idSubject;
+		Integer cuposTomados = subjectService.cuposTomados(idSub);
+		System.out.println("cupos tomados en rest : " + cuposTomados);
+		return new ResponseEntity<Integer>(cuposTomados, HttpStatus.OK);
 		
 	}
 	

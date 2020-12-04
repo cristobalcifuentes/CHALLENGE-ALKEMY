@@ -60,4 +60,11 @@ public class DayHourHandRestController {
 		
 	}
 
+	@PostMapping("/por-campos")
+	public ResponseEntity<DayHourHand> obtenerDayHourHandPorCampos(@RequestBody DayHourHand dayHourHand){
+		
+		DayHourHand sub = dayHourHandService.obtenerDayHourHandPorCampos(dayHourHand);
+		return new ResponseEntity<DayHourHand>(sub, HttpStatus.OK);
+	}
+
 }

@@ -28,7 +28,6 @@
 			<th>total cupos</th>
 			<th>cupos disponibles</th>
 			<th></th>
-			<th></th>
 		</tr>
 		
 		<c:forEach items="${ramos}" var="ramo">
@@ -37,11 +36,10 @@
 			<td>${ramo.getDayHourHand().getDay().getDay()} : ${ramo.getDayHourHand().getHourHand().getDetail()}</td>
 			<td>${ramo.getTeacher().getName()} ${ramo.getTeacher().getLastName()}</td>
 			<td>${ramo.getQuantity()}</td>
-<%-- 			<td>${ramo.}</td> --%>
-			
+			<td>${ramo.getCuposDisponibles()}</td>
+	<td> </td>
 
 			<td><a href="/detalle-ramo/${ramo.getId()}">detalle</a> </td>
-<%-- 			<th><a href="/eliminarprofesor/${profesor.getId()}">eliminar</a></th> --%>
 		</tr>
 		</c:forEach>
 		

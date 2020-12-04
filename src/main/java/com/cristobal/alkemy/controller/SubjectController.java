@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
+import com.cristobal.alkemy.models.entity.DayHourHand;
 import com.cristobal.alkemy.models.entity.Subject;
 import com.cristobal.alkemy.models.entity.Teacher;
 
@@ -53,8 +54,12 @@ public class SubjectController {
 	@PostMapping("/guardar-ramo-editado")
 	public String guardarEdicionRamo(Subject subject) {
 		
-		System.out.println(subject);
 		
+		DayHourHand dayHourHandSinId = subject.getDayHourHand();
+		DayHourHand dayHourHandConId = clienteRest.postForObject(proveedorRest +  "/day-hourhand/por-campos/", dayHourHandSinId, DayHourHand.class);
+		Subject subjectEditado = subject;
+		subjectEditado.setDayHourHand(dayHourHandConId);
+		clienteRest.put(proveedorRest + "/subject", subjectEditado);
 		return "redirect:/gestionar-ramos";
 	}
 

@@ -1,5 +1,6 @@
 package com.cristobal.alkemy.service.implement;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,5 +48,34 @@ public class SubjectServiceImplement implements ISubjectService {
 		subjectRepository.deleteById(id);
 		return false;
 	}
+
+	@Override
+	public int cuposTomados(int idSubjec) {
+		
+		return subjectRepository.cuposTomados(idSubjec);
+	}
+
+	@Override
+	public List<Subject> agregarCuposTomados(List<Subject> subjects) {
+		
+		List<Subject> subs = subjects;
+		List<Subject> subjectsNews = new ArrayList<>();
+		for(Subject subject : subs) {
+			int cupoTomado = subjectRepository.cuposTomados(subject.getId());
+			int TotalCupo = subject.getQuantity();
+			int cuposDiponibles = TotalCupo - cupoTomado;
+			Subject subjectsNew = subject;
+			subjectsNew.setCuposDisponibles(cuposDiponibles);
+			subjectsNews.add(subjectsNew);
+		}
+		return subjectsNews;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

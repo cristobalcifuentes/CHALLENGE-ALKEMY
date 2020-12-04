@@ -38,3 +38,5 @@ INSERT INTO users_role(role_id, user_id) VALUES(1, 3);
 INSERT INTO users_role(role_id, user_id) VALUES(2, 3);
 INSERT INTO subject(subject_id, description, name, quantity, day_hour_hand_id, teacher_id ) VALUES(1, 'introduccion a la programacion', 'introduccion a la programacion', 5, 1, 1);
 INSERT INTO subject(subject_id, description, name, quantity, day_hour_hand_id, teacher_id ) VALUES(2, 'algebra basica', 'algebra', 5, 1, 1);
+INSERT INTO subject_user (subject_id, user_id) VALUES(1, 1);
+INSERT INTO subject_user (subject_id, user_id) VALUES(1, 2);

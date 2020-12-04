@@ -27,7 +27,7 @@
 						<br /> <br /> <label for="quantity"> cantidad cupos</label> <br />
 						<form:input path="quantity"></form:input>
 						
-						<br /> <br /> <label for="quantity"> profesor</label> <br />
+						<br /> <br /> <label for="teacher"> profesor</label> <br />
 						<form:select path="teacher" >
 						<c:forEach items="${profesores}" var="profesor">
 							<form:option value="${profesor.getId()}" label="${profesor.getName()} ${profesor.getLastName()}" />
