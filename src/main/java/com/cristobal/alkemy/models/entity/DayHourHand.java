@@ -54,6 +54,13 @@ public class DayHourHand {
 	public void setHourHand(HourHand hourHand) {
 		this.hourHand = hourHand;
 	}
+
+	@Override
+	public String toString() {
+		return "DayHourHand [id=" + id + ", day=" + day + ", hourHand=" + hourHand + "]";
+	}
+	
+	
 	
 	
 

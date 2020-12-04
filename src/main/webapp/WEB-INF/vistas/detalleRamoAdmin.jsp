@@ -14,7 +14,7 @@
 
 <div class="card text-center">
   <div class="card-header">
-   PROFESOR: ${ramo.getTeacher().getName()} ${ramo.getTeacher().getLastName()}
+   PROFESOR: <a href="/editarprofesor/${ramo.getTeacher().getId()}">${ramo.getTeacher().getName()} ${ramo.getTeacher().getLastName()}</a>
   </div>
   <div class="card-body">
     <h5 class="card-title">${ramo.getName()}</h5>

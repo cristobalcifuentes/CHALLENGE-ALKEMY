@@ -26,7 +26,6 @@
 			<th>dni</th>
 			<th>activo</th>
 			<th></th>
-			<th></th>
 		</tr>
 		
 		<c:forEach items="${profesores}" var="profesor">
@@ -35,8 +34,7 @@
 			<td>${profesor.getLastName()}</td>
 			<td>${profesor.getDNI()}</td>
 			<td>${profesor.getEnabled().getEnabled()}</td>
-			<td><a href="/editarprofesor/${profesor.getId()}">editar</a> </td>
-			<th><a href="/eliminarprofesor/${profesor.getId()}">eliminar</a></th>
+			<td><a href="/editarprofesor/${profesor.getId()}">gestionar</a> </td>
 		</tr>
 		</c:forEach>
 		

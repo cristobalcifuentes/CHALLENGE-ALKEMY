@@ -48,6 +48,12 @@ public class DayHourHandServiceImplement implements IDayHourHandService{
 		 dayHourHandRepository.deleteById(id);
 		return true;
 	}
+
+	@Override
+	public DayHourHand obtenerDayHourHandPorCampos(DayHourHand dayHourHand) {
+		
+		return dayHourHandRepository.obtenerDayHourHandPorCampos(dayHourHand.getDay().getId(), dayHourHand.getHourHand().getId());
+	}
 	
 	
 
