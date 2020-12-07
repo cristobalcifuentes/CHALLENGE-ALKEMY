@@ -79,4 +79,19 @@ public class TeacherServiceImplement implements ITeacherService {
 		return subjects;
 	}
 
+	@Override
+	public List<Teacher> listarHabilitados(List<Teacher> teachers) {
+		
+		List<Teacher> teachs = teachers;
+		List<Teacher> TeachersNew = new ArrayList();
+		for(Teacher teacher: teachs) {
+			if(teacher.getEnabled().getEnabled().equals("activo")) {
+				TeachersNew.add(teacher);
+				System.out.println(teacher);
+			}
+		}
+		
+		return TeachersNew;
+	}
+
 }

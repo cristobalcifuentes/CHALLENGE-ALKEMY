@@ -54,6 +54,12 @@ public class DayHourHandServiceImplement implements IDayHourHandService{
 		
 		return dayHourHandRepository.obtenerDayHourHandPorCampos(dayHourHand.getDay().getId(), dayHourHand.getHourHand().getId());
 	}
+
+	@Override
+	public int horarioAlumno(int IdUser, int idDayHourHand) {
+
+		return dayHourHandRepository.horarioAlumno(IdUser, idDayHourHand);
+	}
 	
 	
 

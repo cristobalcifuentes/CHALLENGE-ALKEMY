@@ -8,14 +8,12 @@
 
 <meta charset="ISO-8859-1">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<title>GESTIONAR RAMOS</title>
+<title>LISTADO RAMOS</title>
 </head>
 <body>
 
-<h1 style="text-align: center;">GESTIONAR RAMOS</h1>
-<nav class="navbar d-flex flex-row-reverse">
-<a href="/nuevoramo"><button class="btn btn-outline-success my-2 my-lg-0 ">nuevo ramo</button></a>
-</nav>
+<h1 style="text-align: center;">LISTADO MATERIAS</h1>
+
 
 
 	
@@ -39,7 +37,7 @@
 			<td>${ramo.getCuposDisponibles()}</td>
 	<td> </td>
 
-			<td><a href="/detalle-ramo/${ramo.getId()}">detalle</a> </td>
+			<td><a href="/alumn/detalle-ramo/${ramo.getId()}"  class="btn btn-primary">detalle</a> </td>
 		</tr>
 		</c:forEach>
 		

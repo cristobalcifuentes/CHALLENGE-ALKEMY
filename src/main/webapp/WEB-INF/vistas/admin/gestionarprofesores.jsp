@@ -8,12 +8,12 @@
 
 <meta charset="ISO-8859-1">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<title>Insert title here</title>
+<title>GESTION PROFESORES - ALKEMY</title>
 </head>
 <body>
 <h1 style="text-align: center;">GESTIONAR PROFESORES</h1>
 <nav class="navbar d-flex flex-row-reverse">
-<a href="/nuevoprofesor"><button class="btn btn-outline-success my-2 my-lg-0 ">nuevo profesor</button></a>
+<a href="/admin/nuevoprofesor"><button class="btn btn-outline-success my-2 my-lg-0 ">nuevo profesor</button></a>
 </nav>
 
 
@@ -21,10 +21,10 @@
 	<table class="table table-dark">
 
 		<tr>
-			<th>nombre</th>
-			<th>apellido</th>
-			<th>dni</th>
-			<th>activo</th>
+			<th>NOMBRE</th>
+			<th>APELLIDO</th>
+			<th>DNI</th>
+			<th></th>
 			<th></th>
 		</tr>
 		
@@ -34,7 +34,7 @@
 			<td>${profesor.getLastName()}</td>
 			<td>${profesor.getDNI()}</td>
 			<td>${profesor.getEnabled().getEnabled()}</td>
-			<td><a href="/editarprofesor/${profesor.getId()}">gestionar</a> </td>
+			<td><a href="/admin/editarprofesor/${profesor.getId()}">gestionar</a> </td>
 		</tr>
 		</c:forEach>
 		

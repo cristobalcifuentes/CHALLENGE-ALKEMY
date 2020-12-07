@@ -25,7 +25,11 @@ public class LoginController {
 		System.out.println("llego al controlador logincontroller metodo login");
 		if (user.getRut().equals("admin")) {
 			System.out.println("admin");
-			return "/indexadmin";
+			return "/admin/indexadmin";
+		} 
+		if (user.getRut().equals("alumn")) {
+			System.out.println("alumn");
+			return "/alumn/indexAlumn";
 		}
 		return "/index";
 	}

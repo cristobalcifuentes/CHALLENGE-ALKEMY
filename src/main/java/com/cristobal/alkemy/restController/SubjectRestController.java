@@ -36,7 +36,7 @@ public class SubjectRestController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Subject> listarPorId(@PathVariable("id") Integer id){
 		
-		Subject subject = subjectService.leerPorId(id);
+		Subject subject = subjectService.agregarCuposTomados(subjectService.leerPorId(id));
 		return new ResponseEntity<Subject>(subject, HttpStatus.OK);
 	}
 	
@@ -61,15 +61,15 @@ public class SubjectRestController {
 		
 	}
 	
-	@DeleteMapping("/cupos/{id}")
-	public ResponseEntity<Integer> cuposTomados(@PathVariable("id") int idSubject){
+	@GetMapping("/por-alumno/{idUSer}")
+	public  ResponseEntity<List<Subject>> cursosPorAlumno(@PathVariable int idUSer){
 		
-		int idSub= idSubject;
-		Integer cuposTomados = subjectService.cuposTomados(idSub);
-		System.out.println("cupos tomados en rest : " + cuposTomados);
-		return new ResponseEntity<Integer>(cuposTomados, HttpStatus.OK);
-		
+		System.out.println("llego al rest");
+		List<Subject> subjects = subjectService.cursosPorAlumno(idUSer);
+		return new ResponseEntity<List<Subject>>(subjects, HttpStatus.OK);
 	}
+	
+
 	
 
 

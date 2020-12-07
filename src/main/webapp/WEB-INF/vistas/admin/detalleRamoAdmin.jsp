@@ -14,12 +14,12 @@
 
 <div class="card text-center">
   <div class="card-header">
-   PROFESOR: <a href="/editarprofesor/${ramo.getTeacher().getId()}">${ramo.getTeacher().getName()} ${ramo.getTeacher().getLastName()}</a>
+   PROFESOR: <a href="/admin/editarprofesor/${ramo.getTeacher().getId()}">${ramo.getTeacher().getName()} ${ramo.getTeacher().getLastName()}</a>
   </div>
   <div class="card-body">
     <h5 class="card-title">${ramo.getName()}</h5>
     <p class="card-text"> ${ramo.getDescription()}</p>
-    <a href="/editar-ramo/${ramo.getId()}" class="btn btn-primary">Editar</a>
+    <a href="/admin/editar-ramo/${ramo.getId()}" class="btn btn-primary">Editar</a>
   </div>
   <div class="card-footer text-muted">
    ${ramo.getDayHourHand().getDay().getDay()} : ${ramo.getDayHourHand().getHourHand().getDetail()}

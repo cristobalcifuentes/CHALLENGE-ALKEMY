@@ -8,5 +8,7 @@ public interface ISubjectService extends ICRUDService<Subject> {
 	
 	int cuposTomados(int idSubjec);
 	List<Subject> agregarCuposTomados(List<Subject> subjects);
+	Subject agregarCuposTomados(Subject subject);
+	List<Subject> cursosPorAlumno(int idUSer);
 
 }

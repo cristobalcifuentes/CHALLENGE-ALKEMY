@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import com.cristobal.alkemy.models.entity.Subject;
@@ -18,6 +19,7 @@ import com.cristobal.alkemy.models.entity.Teacher;
 
 
 @Controller
+@RequestMapping("/admin")
 public class TeacherController {
 	
 	@Autowired
@@ -31,7 +33,7 @@ public class TeacherController {
 				
 		List<Teacher> profesores = Arrays.asList(clienteRest.getForObject(proveedorRest + "/teachers", Teacher[].class));
 		model.addAttribute("profesores", profesores);
-		return "gestionarprofesores";
+		return "/admin/gestionarprofesores";
 	}
 	
 	@GetMapping("/editarprofesor/{id}")
@@ -44,14 +46,14 @@ public class TeacherController {
 		model.addAttribute("profesor", profesor);
 		model.addAttribute("command", profesor);
 		model.addAttribute("ramos", subject);
-		return "/editarprofesor";
+		return "/admin/editarprofesor";
 	}
 	
 	@PostMapping("/guardarprofesor")
 	public String guardarprofesor( Teacher teacher) {
 				
 		clienteRest.postForLocation(proveedorRest + "/teachers/", teacher);
-		return "redirect:/gestionar-profesores";
+		return "redirect:/admin/gestionar-profesores";
 	}
 	
 	
@@ -59,7 +61,7 @@ public class TeacherController {
 	public String eliminarprofesor(@PathVariable int id) {
 				
 		clienteRest.delete(proveedorRest + "/teachers/" + id);
-		return "redirect:/gestionar-profesores";
+		return "redirect:/admin/gestionar-profesores";
 	}
 	
 	
@@ -68,7 +70,7 @@ public class TeacherController {
 	public String crearprofesor(Model model) {
 				
 		model.addAttribute("command", new Teacher());
-		return "/editarprofesor";
+		return "/admin/editarprofesor";
 	}
 	
 	

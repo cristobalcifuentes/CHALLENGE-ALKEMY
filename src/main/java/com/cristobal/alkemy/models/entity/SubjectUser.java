@@ -48,6 +48,14 @@ public class SubjectUser implements Serializable{
 	public String toString() {
 		return "SubjectUser [subject=" + subject + ", user=" + user + "]";
 	}
+
+	public SubjectUser(Subject subject, User user) {
+		this.subject = subject;
+		this.user = user;
+	}
+
+	public SubjectUser() {
+	}
 	
 	
 	

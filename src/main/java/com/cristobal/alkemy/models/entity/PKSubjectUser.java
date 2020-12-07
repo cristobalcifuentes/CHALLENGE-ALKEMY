@@ -59,6 +59,13 @@ public class PKSubjectUser implements Serializable {
 
 	public PKSubjectUser() {
 	}
+
+	@Override
+	public String toString() {
+		return "PKSubjectUser [subject=" + subject + ", user=" + user + "]";
+	}
+	
+	
 	
 	
 	

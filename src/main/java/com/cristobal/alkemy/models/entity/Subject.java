@@ -15,11 +15,11 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "subject")
-public class Subject {
+public class Subject implements Comparable<Subject>{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_subject")
-	@SequenceGenerator(name = "seq_subject", sequenceName = "seq_subject", allocationSize = 1, initialValue = 2)
+	@SequenceGenerator(name = "seq_subject", sequenceName = "seq_subject", allocationSize = 1, initialValue = 5)
 	@Column(name = "subject_id")
 	private int id;
 
@@ -29,7 +29,7 @@ public class Subject {
 	@Column(name = "quantity", nullable = false)
 	private int quantity;
 
-	@Column(name = "description", nullable = false, length = 4000)
+	@Column(name = "description", length = 4000)
 	private String description;
 
 	@ManyToOne
@@ -106,6 +106,13 @@ public class Subject {
 		return "Subject [id=" + id + ", name=" + name + ", quantity=" + quantity + ", description=" + description
 				+ ", dayHourHand=" + dayHourHand + ", teacher=" + teacher + ", cuposDisponibles=" + cuposDisponibles + "]";
 	}
+
+	@Override
+	public int compareTo(Subject sub) {
+	
+        return this.name.compareTo(sub.getName());
+    }
+
 
 
 

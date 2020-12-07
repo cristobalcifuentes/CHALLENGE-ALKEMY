@@ -71,6 +71,24 @@ public class SubjectServiceImplement implements ISubjectService {
 		return subjectsNews;
 	}
 	
+	@Override
+	public Subject agregarCuposTomados(Subject subject) {
+		
+		Subject sub = subject;
+		int cupoTomado = subjectRepository.cuposTomados(sub.getId());
+		int TotalCupo = sub.getQuantity();
+		int cuposDiponibles = TotalCupo - cupoTomado;
+		sub.setCuposDisponibles(cuposDiponibles);
+		
+		return sub;
+	}
+
+	@Override
+	public List<Subject> cursosPorAlumno(int idUSer) {
+		
+		return subjectRepository.cursosPorAlumno(idUSer);
+	}
+	
 	
 	
 	

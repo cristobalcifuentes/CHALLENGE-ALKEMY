@@ -31,6 +31,13 @@ public class TeacherRestController {
 		List<Teacher> teacher = teacherService.listar();
 		return new ResponseEntity<List<Teacher>>(teacher, HttpStatus.OK);
 	}
+	
+	@GetMapping("habilitados")
+	public ResponseEntity<List<Teacher>> listarHabilitados() {
+
+		List<Teacher> teacher = teacherService.listarHabilitados(teacherService.listar());
+		return new ResponseEntity<List<Teacher>>(teacher, HttpStatus.OK);
+	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Teacher> listarPorId(@PathVariable("id") Integer id) {
@@ -38,6 +45,7 @@ public class TeacherRestController {
 		Teacher teacher = teacherService.leerPorId(id);
 		return new ResponseEntity<Teacher>(teacher, HttpStatus.OK);
 	}
+	
 
 	@PostMapping
 	public ResponseEntity<Teacher> registrar(@RequestBody Teacher teacher) {

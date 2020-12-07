@@ -44,17 +44,17 @@ public class SubjectUserRestController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<SubjectUser> registrar(@RequestBody SubjectUser subjectUser){
+	public ResponseEntity<SubjectUser> registrar(@RequestBody PKSubjectUser pKSubjectUser){
 		
-		SubjectUser teach = subjectUserService.registrar(subjectUser);
-		return new ResponseEntity<SubjectUser>(teach, HttpStatus.OK);
+		SubjectUser subjectUserNew = subjectUserService.registrar(pKSubjectUser);
+		return new ResponseEntity<SubjectUser>(subjectUserNew, HttpStatus.OK);
 	}
 	
 	@PutMapping
 	public ResponseEntity<SubjectUser> modificar(@RequestBody SubjectUser subjectUser){
 		
-		SubjectUser teach = subjectUserService.registrar(subjectUser);
-		return new ResponseEntity<SubjectUser>(teach, HttpStatus.OK);
+		SubjectUser subjectUserNew = subjectUserService.modificar(subjectUser);
+		return new ResponseEntity<SubjectUser>(subjectUserNew, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{subject}/{user}")
@@ -65,5 +65,17 @@ public class SubjectUserRestController {
 		return new ResponseEntity<PKSubjectUser>(id, HttpStatus.OK);
 		
 	}
+	
+	@GetMapping("/existe/{subject}/{user}")
+	public ResponseEntity<Integer> existe(@PathVariable Integer subject, @PathVariable Integer user){
+		
+		PKSubjectUser pKSubjectUser = subjectUserService.crearPK(subject, user);
+		Integer existe = subjectUserService.existe(pKSubjectUser);
+		return new ResponseEntity<Integer>(existe, HttpStatus.OK);
+	}
+	
+	
+	
+	
 
 }

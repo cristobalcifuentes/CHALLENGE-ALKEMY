@@ -66,5 +66,12 @@ public class DayHourHandRestController {
 		DayHourHand sub = dayHourHandService.obtenerDayHourHandPorCampos(dayHourHand);
 		return new ResponseEntity<DayHourHand>(sub, HttpStatus.OK);
 	}
+	
+	@GetMapping("/{idUser}/{idDayHourHand}")
+	public ResponseEntity<Integer> Horario(@PathVariable int idUser, @PathVariable int idDayHourHand){
+		
+		Integer HorarioTomado = dayHourHandService.horarioAlumno(idUser, idDayHourHand);
+		return new ResponseEntity<Integer>(HorarioTomado, HttpStatus.OK);
+	}
 
 }

@@ -10,22 +10,20 @@
 
 <meta charset="ISO-8859-1">
 
-<title>editar ramo</title>
+<title>EDITAR MATERIA</title>
 </head>
 <body>
-	<h1>EDITAR RAMO</h1>
+	<h1>EDITAR MATERIA</h1>
 
 
 
-			<form:form method="post" action="/guardar-ramo-editado">
+			<form:form method="post" action="/admin/guardar-ramo-editado">
 				<div class="form-group">
 					<div class="form-group col-md-3">
 					
-						<label for="name"> nombre</label> <br />
-						<form:input path="name"></form:input>
-
-						<br /> <br /> <label for="quantity"> cantidad cupos</label> <br />
-						<form:input path="quantity"></form:input>
+						<form:input placeholder="NOMBRE" path="name"></form:input>
+						<br><br>
+						<form:input placeholder="CANTIDAD CUPOS" path="quantity"></form:input>
 						
 						<br /> <br /> <label for="teacher"> profesor</label> <br />
 						<form:select path="teacher" >
@@ -49,14 +47,13 @@
 							<form:option value="2" label="09:45 - 11:15" />
 							<form:option value="3" label="11:30 - 13:00" />
 						</form:select>
-						
-						<br /> <br /> <label for="description"> descripcion</label> <br />
-						<form:textarea class="form-control" rows="5" path="description"></form:textarea>
+						<br><br>
+						<form:textarea placeholder="DESCRIPCION" class="form-control" rows="5" path="description"></form:textarea>
 						
 						<form:hidden path="id" />
 						
-						<br /> <br /> <input type="reset" value="Limpiar" /> <input
-							type="submit" value="Registrar" />
+						<br /> <br /> <input type="reset" class="btn btn-secondary  mb-2"  value="Limpiar" /> <input
+							type="submit" class="btn btn-primary mb-2" value="Registrar" />
 
 
 					</div>

@@ -17,22 +17,18 @@
 		<div class="col mr-md-3">
 			<h1>editar profesor</h1>
 
-			<form:form method="post" action="/guardarprofesor">
+			<form:form method="post" action="/admin/guardarprofesor">
+				<div class="form-group">
+					<div class="form-group col-md-3">
 			  <div class="form-row">
 			  <div class="form-group col-md-3">
-				<label for="name"> nombre</label>
-				<br />
-				<form:input path="name"></form:input>
+				<form:input placeholder="NOMBRE"  path="name"></form:input>
 				<br />
 				<br />
-				<label for="lastName"> apellido</label>
-				<br />
-				<form:input path="lastName"></form:input>
+				<form:input placeholder="APELLIDO" path="lastName"></form:input>
 				<br />
 				<br />
-				<label for="DNI"> dni</label>
-				<br />
-				<form:input path="DNI"></form:input>
+				<form:input placeholder="DNI" path="DNI"></form:input>
 				<br />
 				<br />
 				<label for="enabled"> activo</label>
@@ -45,12 +41,13 @@
 				<br />
 				<br />
 				<form:hidden path="id" />
-				<br />
-				<br />
-				<input type="reset" value="Limpiar" />
-				<input type="submit" value="Registrar" />
+				
+				<input class="btn btn-secondary mb-2" type="reset" value="Limpiar" />
+				<input type="submit" class="btn btn-primary mb-2" value="Registrar" />
 				
 				
+				</div>
+				</div>
 				</div>
 				</div>
 			</form:form>
@@ -60,7 +57,7 @@
 
 
 
-				<th><a href="/eliminarprofesor/${profesor.getId()}">eliminar</a></th>
+				<th><a type="button" class="btn btn-danger" href="/admin/eliminarprofesor/${profesor.getId()}">eliminar</a></th>
 			</c:if>
 
 			<c:if test = "${ramos != null}" >
@@ -73,7 +70,7 @@
 						<td>${ramo.getName()}</td>
 						<td>${ramo.getDayHourHand().getDay().getDay()}</td>
 						<td>${ramo.getDayHourHand().getHourHand().getDetail()}</td>
-						<td><a href="/detalle-ramo/${ramo.getId()}">ver detalle
+						<td><a type="button" class="btn btn-primary" href="/admin/detalle-ramo/${ramo.getId()}">ver detalle
 								ramo</a></td>
 					</tr>
 				</c:forEach>
