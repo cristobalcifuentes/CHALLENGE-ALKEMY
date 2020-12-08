@@ -17,7 +17,8 @@ public interface ISubjectRepository extends JpaRepository<Subject, Integer> {
 	
 	
 
-	@Query(value = "select * from subject s join subject_user su on s.subject_id= su.subject_id where su.user_id=?", nativeQuery = true)
+	@Query(value = "select s.subject_id, s.description, s.name, s.quantity, s.day_hour_hand_id, s.teacher_id"
+			+ " from subject s join subject_user su on s.subject_id= su.subject_id where su.user_id=?", nativeQuery = true)
 	List<Subject> cursosPorAlumno(int idUSer);
 
 }

@@ -22,7 +22,7 @@
 			<h5 class="card-title">${ramo.getName()}</h5>
 			<p class="card-text">${ramo.getDescription()}</p>
 			
-			<c:if test="${existe == 0}">
+			<c:if test="${cursoTomado == 0}">
 			<c:if test="${cupos == 0}">
 				<p class="alert alert-primary" role="alert">no quedan cupos disponibles en este curso</p>
 			</c:if>
@@ -37,7 +37,7 @@
 				</c:if>
 			</c:if>
 			
-			<c:if test="${existe != 0}">
+			<c:if test="${cursoTomado != 0}">
 				<p class="alert alert-primary" role="alert">usted ya esta inscrito en esta materia</p>
 
 			</c:if>

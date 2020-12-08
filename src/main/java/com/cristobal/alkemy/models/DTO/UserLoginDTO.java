@@ -1,6 +1,5 @@
 package com.cristobal.alkemy.models.DTO;
 
-import javax.validation.constraints.NotBlank;
 
 public class UserLoginDTO {
 	

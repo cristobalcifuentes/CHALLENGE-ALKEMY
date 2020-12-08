@@ -1,5 +1,6 @@
 package com.cristobal.alkemy.controller;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -13,10 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import com.cristobal.alkemy.models.entity.DayHourHand;
 import com.cristobal.alkemy.models.entity.PKSubjectUser;
 import com.cristobal.alkemy.models.entity.Subject;
 import com.cristobal.alkemy.models.entity.SubjectUser;
+import com.cristobal.alkemy.models.entity.User;
 
 @Controller
 @RequestMapping("/alumn")
@@ -32,9 +33,12 @@ public class AlumnController {
 	
 	
 	@GetMapping("/mis-materias")
-	public String misMaterias(Model model) {
+	public String misMaterias(Model model, Principal principal) {
 
-		//obtener desde secion
+		System.out.println("principal en metodo mis materias de alumn = " + principal.getName());
+		
+		User user = clienteRest.getForObject(proveedorRest + "/users/rut" + principal.getName(), User.class );
+		System.out.println(user);
 		int idUser = 3 ;
 		
 		System.out.println("solicitud = *** " + proveedorRest + "/subject/por-alumno/" + idUser);
@@ -46,8 +50,8 @@ public class AlumnController {
 	}
 	
 	@GetMapping("/Listado-materias")
-	public String listado(Model model) {
-
+	public String listado(Model model, Principal principal) {
+		System.out.println("principal en listado materias = " + principal);
 		List<Subject> ramos = Arrays.asList(clienteRest.getForObject(proveedorRest + "/subject", Subject[].class));
 		Collections.sort(ramos);
 		model.addAttribute("ramos", ramos);
@@ -66,12 +70,12 @@ public class AlumnController {
 		int idHorario= ramo.getDayHourHand().getId() ;
 		int cupos = ramo.getCuposDisponibles();
 
-		Integer existe = clienteRest.getForObject(proveedorRest + "/subject-user/existe/" + idMateria + "/" + idAlumno , Integer.class);
+		Integer cursoTomado = clienteRest.getForObject(proveedorRest + "/subject-user/existe/" + idMateria + "/" + idAlumno , Integer.class);
 		Integer horarioTomado = clienteRest.getForObject(proveedorRest + "/day-hourhand/" + idAlumno + "/" + idHorario , Integer.class);
 	
 		model.addAttribute("cupos", cupos);
 		model.addAttribute("horarioTomado", horarioTomado);
-		model.addAttribute("existe", existe);
+		model.addAttribute("cursoTomado", cursoTomado);
 		model.addAttribute("ramo", ramo);
 		
 		return "/alumn/detalleRamo";
@@ -83,7 +87,7 @@ public class AlumnController {
 		//id rescatarlo de session
 		int idUser = 3;
 		PKSubjectUser pk = new PKSubjectUser(id, idUser);
-		SubjectUser subjectUserenviar = clienteRest.postForObject(proveedorRest +  "/subject-user", pk, SubjectUser.class);
+		clienteRest.postForObject(proveedorRest +  "/subject-user", pk, SubjectUser.class);
 		
 		return "redirect:/alumn/Listado-materias";
 	}

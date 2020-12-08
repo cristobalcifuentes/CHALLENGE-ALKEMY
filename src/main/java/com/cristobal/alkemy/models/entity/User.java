@@ -1,5 +1,6 @@
 package com.cristobal.alkemy.models.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,11 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
 public class User {
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,  generator = "seq_user")
@@ -37,8 +40,10 @@ public class User {
 	private String password;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-	private Set<UserRole> roles;
+//@Transient
+	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+	private Set<UserRole> roles = new HashSet<>();
+	
 
 	public int getId() {
 		return id;
@@ -81,6 +86,8 @@ public class User {
 	}
 
 	public Set<UserRole> getRoles() {
+		
+
 		return roles;
 	}
 
