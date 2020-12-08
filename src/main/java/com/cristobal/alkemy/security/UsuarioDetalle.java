@@ -40,27 +40,18 @@ public class UsuarioDetalle implements UserDetails{
     }
     
     public static UsuarioDetalle build(User usuario){
-    	System.out.println("llego a build de userDetails");
-    	System.out.println("usuario que llego a build = " + usuario);
-    	System.out.println("id de usuario = " + usuario.getId()) ;
+    	
     	Set<UserRole> roles = usuario.getRoles();
-    	System.out.println("roles rescatados = " + roles);
     	List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>() ;
     	for (UserRole rol: roles) {
     		authorities.add(new SimpleGrantedAuthority(rol.getRole().getRole() ));
     	}
         
-        System.out.println("autoritis en build de usurs detail" + authorities);
         UsuarioDetalle usuariodetalle = new UsuarioDetalle(usuario.getId(), usuario.getName(), usuario.getRut(), usuario.getPassword(), authorities);
-        System.out.println("usuario detalle construido = " + usuariodetalle);
         return usuariodetalle;
     }
     
-//    private List<Role> consultarRoles(int idUser) {
-//    	List<Role> roles = roleRepository.rolesPorIdUsuario(idUser) ;
-//    	System.out.println("roles rescatados = " + roles);
-//    	return roles;
-//    }
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

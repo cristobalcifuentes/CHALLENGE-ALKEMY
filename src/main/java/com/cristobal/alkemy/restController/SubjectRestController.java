@@ -64,7 +64,6 @@ public class SubjectRestController {
 	@GetMapping("/por-alumno/{idUSer}")
 	public  ResponseEntity<List<Subject>> cursosPorAlumno(@PathVariable int idUSer){
 		
-		System.out.println("llego al rest");
 		List<Subject> subjects = subjectService.cursosPorAlumno(idUSer);
 		return new ResponseEntity<List<Subject>>(subjects, HttpStatus.OK);
 	}

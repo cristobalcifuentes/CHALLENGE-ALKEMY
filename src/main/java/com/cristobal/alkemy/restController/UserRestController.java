@@ -55,6 +55,7 @@ public class UserRestController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Integer> eliminar(@PathVariable Integer id){
+		
 		userService.eliminar(id);
 		return new ResponseEntity<Integer>(id, HttpStatus.OK);
 		
@@ -64,7 +65,6 @@ public class UserRestController {
 	@GetMapping("/rut/{rut}")
 	public ResponseEntity<User> listarPorRut(@PathVariable String rut){
 		
-		System.out.println("rut que llega = " + rut);
 		User user = userService.getByRut(rut).get() ;
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}

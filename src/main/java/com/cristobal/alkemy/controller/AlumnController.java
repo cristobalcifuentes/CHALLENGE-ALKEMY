@@ -35,23 +35,16 @@ public class AlumnController {
 	@GetMapping("/mis-materias")
 	public String misMaterias(Model model, Principal principal) {
 
-		System.out.println("principal en metodo mis materias de alumn = " + principal.getName());
-		
-		User user = clienteRest.getForObject(proveedorRest + "/users/rut" + principal.getName(), User.class );
-		System.out.println(user);
-		int idUser = 3 ;
-		
-		System.out.println("solicitud = *** " + proveedorRest + "/subject/por-alumno/" + idUser);
-		
+		User user = clienteRest.getForObject(proveedorRest + "/users/rut/" + principal.getName(), User.class );
+		int idUser = user.getId() ;
 		List<Subject> ramos = Arrays.asList(clienteRest.getForObject(proveedorRest + "/subject/por-alumno/" + idUser, Subject[].class));
-		
 		model.addAttribute("ramos", ramos);
 		return "/alumn/misMaterias";
 	}
 	
 	@GetMapping("/Listado-materias")
 	public String listado(Model model, Principal principal) {
-		System.out.println("principal en listado materias = " + principal);
+
 		List<Subject> ramos = Arrays.asList(clienteRest.getForObject(proveedorRest + "/subject", Subject[].class));
 		Collections.sort(ramos);
 		model.addAttribute("ramos", ramos);
@@ -60,12 +53,13 @@ public class AlumnController {
 	
 	
 	@GetMapping("/detalle-ramo/{id}")
-	public String detalleRamo(@PathVariable int id, Model model) {
+	public String detalleRamo(@PathVariable int id, Model model, Principal principal) {
 
 		Subject ramo = clienteRest.getForObject(proveedorRest + "/subject/" + id, Subject.class);
 		
-		//obtener id de sesion
-		int idAlumno = 3;
+		User user = clienteRest.getForObject(proveedorRest + "/users/rut/" + principal.getName(), User.class );
+		
+		int idAlumno = user.getId() ;
 		int idMateria = id;
 		int idHorario= ramo.getDayHourHand().getId() ;
 		int cupos = ramo.getCuposDisponibles();
@@ -82,10 +76,11 @@ public class AlumnController {
 	}
 	
 	@GetMapping("/inscribirse/{id}")
-	public String inscribirseRamo(@PathVariable int id, Model model) {
+	public String inscribirseRamo(@PathVariable int id, Model model, Principal principal) {
 
-		//id rescatarlo de session
-		int idUser = 3;
+		User user = clienteRest.getForObject(proveedorRest + "/users/rut/" + principal.getName(), User.class );
+		
+		int idUser = user.getId();
 		PKSubjectUser pk = new PKSubjectUser(id, idUser);
 		clienteRest.postForObject(proveedorRest +  "/subject-user", pk, SubjectUser.class);
 		

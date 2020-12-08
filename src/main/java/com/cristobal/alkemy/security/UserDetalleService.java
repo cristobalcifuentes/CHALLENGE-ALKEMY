@@ -19,10 +19,7 @@ public class UserDetalleService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String rut) throws UsernameNotFoundException {
 		
-		System.out.println("llego a loadUserByUsername, rut = " + rut);
-		
 		User user = userService.getByRut(rut).get();
-		System.out.println("usuario construido en loadUserByUsername (UserDetalleService) = " + user);
 		return UsuarioDetalle.build(user);
 	}
 

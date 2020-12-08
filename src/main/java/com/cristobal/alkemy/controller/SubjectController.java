@@ -51,6 +51,7 @@ public class SubjectController {
 		Subject ramo = clienteRest.getForObject(proveedorRest + "/subject/" + id, Subject.class);
 		List<Teacher> profesores = Arrays.asList(clienteRest.getForObject(proveedorRest + "/teachers/habilitados", Teacher[].class));
 		model.addAttribute("profesores", profesores);
+		model.addAttribute("ramo", ramo);
 		model.addAttribute("command", ramo);
 		return "/admin/editarRamo";
 	}

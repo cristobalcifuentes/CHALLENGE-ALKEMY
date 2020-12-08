@@ -1,22 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<link rel="stylesheet" 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 
 <meta charset="ISO-8859-1">
 
-<title>EDITAR MATERIA</title>
+<title>GESTIONAR MATERIA</title>
 </head>
 <body>
-	<h1>EDITAR MATERIA</h1>
+	<h1  class="text-center">GESTIONAR MATERIA</h1>
+	
+	
+		<nav class="navbar navbar-dark bg-dark">
+	
+	<a class="btn btn-outline-primary" href="/index"> index</a>
+		<a class="btn btn-outline-primary" href="/admin/gestionar-ramos"> gestonar materias</a>
+		<a class="btn btn-outline-primary" href="/admin/gestionar-profesores"> gestonar profesores</a>
+	
 
 
+		<sec:authorize access="isAuthenticated()">
+			<form:form method="get" action="/logout"><input type="submit" class="btn btn-outline-danger mb-2" value=" cerrar sesion" /></form:form>
+		</sec:authorize>
+
+		
+	</nav><br><br><br>
+
+			<c:if test="${ramo == null}">
+				<h2>CREAR MATERIA</h2>
+			</c:if>
+			<c:if test="${ramo != null}">
+				<h2>EDITAR MATERIA</h2>
+			</c:if>
 
 			<form:form method="post" action="/admin/guardar-ramo-editado">
 				<div class="form-group">

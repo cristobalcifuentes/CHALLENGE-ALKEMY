@@ -21,8 +21,11 @@ public class ControladorInicio {
 	private IUserRepository userRepository;
 	
 	@GetMapping(value = { "/home", "", "/"})
-	public String inicio(Model model) {
-				
+	public String inicio(Model model, Principal principal) {
+			
+		if(principal != null ) {
+			return "redirect:/index";
+		}
 		model.addAttribute("command", new UserLoginDTO());
 		return "login";
 		
@@ -31,22 +34,26 @@ public class ControladorInicio {
 	@GetMapping("/index")
 	public String index(Principal principal) {
 		
-		System.out.println("llego metodo login");
-		System.out.println(principal);
-		System.out.println("mostrar rut desde principal = " + principal.getName());
-		User user = userRepository.findByRut(principal.getName()).get();
-		System.out.println(user.getRoles());
-		for(UserRole rol: user.getRoles()) {
-			if(rol.getRole().getRole().equals("student")) {
-				return "/alumn/indexAlumn";
-			}
-			if(rol.getRole().getRole().equals("administrator")){
-				return "/admin/indexadmin";
+		if(principal != null) {
+			User user = userRepository.findByRut(principal.getName()).get();
+			for(UserRole rol: user.getRoles()) {
+				if(rol.getRole().getRole().equals("student")) {
+					return "/alumn/indexAlumn";
+				}
+				if(rol.getRole().getRole().equals("administrator")){
+					return "/admin/indexadmin";
+				}
 			}
 		}
-		return "Index";
+		return "redirect:/";
 	}
 	
+	
+	@GetMapping("/login")
+	public String login() {
+		
+		return "redirect:/index";
+	}
 
 
 }

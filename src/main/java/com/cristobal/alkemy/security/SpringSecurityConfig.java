@@ -1,6 +1,5 @@
 package com.cristobal.alkemy.security;
 
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,8 +16,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetalleService userDetail;
 	
-	@Autowired
-	private DataSource dataSource;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -46,14 +41,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
 		.and()
 		.authorizeRequests()
-		//.antMatchers("/admin/**").hasAnyRole("administrator")
-        //.antMatchers("/alumn/**").hasRole("student")
+		.antMatchers("/admin/**").hasAuthority("administrator")
+        .antMatchers("/alumn/**").hasAuthority("student")
 		.anyRequest().permitAll()
 		.and()
 		.formLogin().loginPage("/login").permitAll()
 		.defaultSuccessUrl("/index")
 		.usernameParameter("rut")
 		.passwordParameter("password")
+		.failureUrl("/")
 		.and()
         .logout()
         .logoutUrl("/logout")
@@ -64,6 +60,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		;
 		
 	}
+	
+	
+	
 	
 
 	
