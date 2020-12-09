@@ -1,6 +1,6 @@
 # CHALLENGE-ALKEMY
 
-#### Se desarrolla challenge propuesto por alkemy, los requerimientos estan detallados en el pdf adjuntado en el repositorio, como fecha maxima se da una semana para llevar a cabo. Ademas se adjunta modelo relacional, para ayudar a una mas rapida compresion de la solucion propuesta.
+#### Se desarrolla challenge propuesto por alkemy, los requerimientos estan detallados en el pdf adjuntado en el repositorio(https://github.com/cristobalcifuentes/CHALLENGE-ALKEMY/blob/master/Challenge%20JAVA%20-%20MVC.pdf), como fecha maxima se da una semana para llevar a cabo. Ademas se adjunta modelo relacional(https://github.com/cristobalcifuentes/CHALLENGE-ALKEMY/blob/master/alkemy%20v3.pdf), para ayudar a una mas rapida compresion de la solucion propuesta.
 
 ### Las tecnologias usadas son:
 * java como lenguaje de programacion
